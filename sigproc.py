@@ -126,7 +126,7 @@ class Signal(object):
 
         # compute the index at which the specified frequency is located in the
         # array
-        index = np.round(float(freq)*n/self.sampling_rate)
+        index = int(np.round(float(freq)*n/self.sampling_rate))
 
         # distribute the signal amplitude over the real and imaginary axes
         re = float(n)*amplitude*np.cos(phase*np.pi/180.0)
@@ -190,7 +190,7 @@ class Signal(object):
         frequency
         '''
         n = len(self.freqs)
-        num_freqs = np.ceil((n+1)/2.0)
+        num_freqs = int(np.ceil((n+1)/2.0))
         x_axis = np.linspace(0, self.sampling_rate/2.0, num_freqs)
 
         # extract only positive frequencies and scale them so that the
